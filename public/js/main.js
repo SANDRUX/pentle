@@ -1,22 +1,14 @@
-
-$('#submit').click(() =>{
-    $('.playerIn').each(el=>{
-        if($('.playerIn')[0].value != '' && $('.playerIn')[1].value != ''){
-            const data = {
-                login:{
-                    nameOne:$('.playerIn')[0].value,
-                    nameTwo:$('.playerIn')[1].value
-                } 
+$('#submit').click(() => {
+            const data = 
+            {
+              name : "data"
             }
-            axios.post('/user', {
-                data
-              })
-              .then(function (response) {
+
+            axios.post('/user', data)
+              .then(response => {
                 console.log(response);
               })
-              .catch(function (error) {
+              .catch(error => {
                 console.log(error);
               });
-        }
-    })
-})  
+        })
