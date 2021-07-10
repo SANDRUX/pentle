@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pintle | Sign In</title>
-    <link rel="shortcut icon" href="../img/pentle.png" />
+    <link rel="shortcut icon" href="public/img/pentle.png" />
     <link rel="stylesheet" href="../public/style/mainPageStyle.css" />
 </head>
 
@@ -14,7 +14,7 @@
     <nav>
         <div class="navbar-box">
             <div class="image-container">
-                <img src="../img/pentle.png" alt="logo">
+                <img src="public/img/pentle.png" alt="logo">
             </div>
             <h2>Pentle</h2>
         </div>
@@ -25,17 +25,20 @@
             <div class="login-form">
                 <form action="">
                     <label for="fname" class="name" , spellcheck="false">First Player name:</label><br />
-                    <input type="text" class="fname" name="fname" /><br />
+                    <input type="text" class="fname playerIn" name="fname" /><br />
                     <label for="fname" class="name" , spellcheck="false">Second Player name:</label><br />
-                    <input type="text" class="fname" name="fname" /><br />
+                    <input type="text" class="fname playerIn" name="fname" /><br />
                 </form>
             </div>
             <div class="btn-box">
-                <button type="submit" class="">Submit</button>
+                <button type="submit" id="submit" class="">Submit</button>
             </div>
     </main>
 
-    <script src="../public/distSrc/mainPage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="public/js/main.js"type="module"></script>
+    <script src="public/distSrc/mainPage.js"></script>
     
 </body>
 
