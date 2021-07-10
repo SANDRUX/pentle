@@ -3,25 +3,21 @@ const app = express()
 const path = require('path')
 const { writeFileSync, readFileSync, readFile, writeFile } = require('fs')
 const { rejects } = require('assert')
-const exp = require('constants')
 
 app.listen(5000)
 
 app.use('/public', express.static(path.join(__dirname, '..', 'public')))
-app.use(express.urlencoded({ extended : false }))
 
 app.get('/', (req, res) =>
 {   
     res.status(200).sendFile(path.join(__dirname, '..', 'public/startPage.html'))
 })
-
-app.post('/user', (req, res) =>
+app.post('/user', (req, res)=>
 {
-    console.log(req.body.data)
-    res.end().status(200)
+    console.log(req.body);
 })
 
-app.post('/user', (req, res) =>
+app.post('/user/:user', (req, res) =>
 {
     let buffer = readFileSync('users/users.json', "utf8")
 
@@ -33,5 +29,4 @@ app.post('/user', (req, res) =>
 
     writeFileSync('users/users.json', data)
 
-    res.send('user successfully registered!').status(200)
-})
+    res.send('user successfully registered!').stat
