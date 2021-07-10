@@ -8,7 +8,7 @@ async function emptyJson(fileName)
 {
     return new Promise((resolve, reject) =>
     {
-        await readFile(fileName, (err, data) => 
+        readFile(fileName, (err, data) => 
         {
             if (err)
             {
@@ -40,12 +40,12 @@ app.get('/', (req, res) =>
 
 app.get('/user/:user', (req, res) =>
 {
-    emptyJson('users/users.json').then(data => 
-    {
-        //TODO
-    })
+    // emptyJson('users/users.json').then(data => 
+    // {
+    //     //TODO
+    // })
 
-    readFileSync('users/users.json', buffer)
+    let buffer = readFileSync('users/users.json', "utf8")
 
     const users = JSON.parse(buffer)
 
