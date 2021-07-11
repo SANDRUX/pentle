@@ -1,4 +1,3 @@
-
 fetch('/usersJson').then(response => response.json()).then(data => {
     function CheckUser(email){
         let bool;

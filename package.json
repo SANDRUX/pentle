@@ -7,6 +7,7 @@
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
+    "nodemon": "^2.0.12",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.5",
     "webpack": "^5.44.0",
@@ -14,9 +15,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "node ./src/app.js"
+    "start": "nodemon ./src/app.js"
   },
   "repository": {
     "type": "git",
