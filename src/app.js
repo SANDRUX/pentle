@@ -3,39 +3,41 @@ const app = express();
 const path = require('path');
 const { writeFileSync, readFileSync, readFile, writeFile } = require('fs');     
 const { rejects } = require('assert');
+const { data } = require('jquery');
+const { resolve } = require('url');
+const { FindUser } = require('./FindUser')
 
-app.listen(5000)
+app.listen(5000, () => 
+{
+    console.log("Server is listening on port 5000")
+})
+
 app.use(express.urlencoded({extended: true}))
+
 app.use('/public', express.static(path.join(__dirname, '..', 'public')))
 
-
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => 
+{
     res.status(200).sendFile(path.join(__dirname, '..', 'public/main.html'))
 })
 
-app.get('/login', (req, res) =>
-{   
-    res.status(200).sendFile(path.join(__dirname, '..', 'public/startPage.html'))
-})
-app.get('/register', (req, res)=>{
-    res.status(200).sendFile(path.join(__dirname, '..', 'public/register.html'))
-})
-app.get('/usersJson', (req, res)=>{
-    res.header("Content-Type",'application/json')
-    res.status(200).sendFile(path.join(__dirname, '..', 'users/users.json'))
-})
-
-app.post('/user', (req, res) =>
+app.post('/register', (req, res) =>
 {
     let buffer = readFileSync('users/users.json', "utf8")
 
-    const users = JSON.parse(JSON.parse(JSON.stringify(buffer)))
+    const users = JSON.parse(buffer)
 
-    users.name.push(req.body)
+    if (FindUser(users.user, req.body.user))
+    {
+        res.status(409).end() // User already registered or already exists
+    }
 
-    const data = JSON.stringify(users)
+    else
+    {   
+        users.user.push({name : req.body.user.name, password : req.body.user.password })
 
-    writeFileSync('users/users.json', data)
+        writeFileSync('users/users.json', JSON.stringify(users))
 
-    res.send('user successfully registered!').status(200)
+        res.status(201).end() // User successfully registered
+    }
 })
