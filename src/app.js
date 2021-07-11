@@ -1,14 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const { writeFileSync, readFileSync, readFile, writeFile } = require('fs');
-const bodyParser = require('body-parser');
+const { writeFileSync, readFileSync, readFile, writeFile } = require('fs');     
 const { rejects } = require('assert');
 
 app.listen(5000)
-
+app.use(express.urlencoded({extended: true}))
 app.use('/public', express.static(path.join(__dirname, '..', 'public')))
-app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res)=>{
