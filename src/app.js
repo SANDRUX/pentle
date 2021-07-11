@@ -22,7 +22,10 @@ app.get('/login', (req, res) =>
 app.get('/register', (req, res)=>{
     res.status(200).sendFile(path.join(__dirname, '..', 'public/register.html'))
 })
-
+app.get('/usersJson', (req, res)=>{
+    res.header("Content-Type",'application/json')
+    res.status(200).sendFile(path.join(__dirname, '..', 'users/users.json'))
+})
 
 app.post('/user', (req, res) =>
 {
