@@ -105,6 +105,8 @@ nav .navbar-box h2 {
 }
 
 .container .login-form {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
 }
 
@@ -147,6 +149,20 @@ nav .navbar-box h2 {
 
 .container .btn-box button:active {
   background: #298b40;
+}
+
+.register-form {
+  font-size: 0.5em;
+  width: -webkit-fit-content;
+  width: fit-content;
+  width: -moz-fit-content;
+  position: absolute;
+  top: 80%;
+}
+
+.register-form a {
+  text-decoration: none;
+  color: black;
 }
 
 @-webkit-keyframes loginAnimation {

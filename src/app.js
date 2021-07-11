@@ -8,9 +8,16 @@ app.listen(5000)
 
 app.use('/public', express.static(path.join(__dirname, '..', 'public')))
 
-app.get('/', (req, res) =>
+app.get('/', (req, res)=>{
+    res.status(200).sendFile(path.join(__dirname, '..', 'public/main.html'))
+})
+
+app.get('/login', (req, res) =>
 {   
     res.status(200).sendFile(path.join(__dirname, '..', 'public/startPage.html'))
+})
+app.get('/register', (req, res)=>{
+    res.status(200).sendFile(path.join(__dirname, '..', 'public/register.html'))
 })
 app.post('/user', (req, res)=>
 {
@@ -29,4 +36,5 @@ app.post('/user/:user', (req, res) =>
 
     writeFileSync('users/users.json', data)
 
-    res.send('user successfully registered!').stat
+    res.send('user successfully registered!').status(200)
+})

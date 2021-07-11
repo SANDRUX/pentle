@@ -78,6 +78,7 @@ nav{
     }
     .login-form{
         @extend %flex;
+        flex-wrap: wrap;
         width: 100%;
         .fname{
             width: 100%;
@@ -114,6 +115,18 @@ nav{
                 background: #298b40;
             }
         }
+    }
+}
+
+.register-form{
+    font-size: 0.5em;
+    width: fit-content;
+    width: -moz-fit-content;
+    position: absolute;
+    top: 80%;
+    a{
+        text-decoration: none;
+        color: black;
     }
 }
 
