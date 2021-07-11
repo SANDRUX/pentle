@@ -1,6 +1,6 @@
 # Pentle
 
-![](https://github.com/SpookyPinkyTux/pentle/blob/master/img/pentle.png?raw=true)
+![](https://github.com/SpookyPinkyTux/pentle/blob/master/public/img/pentle.png?raw=true)
 
 ### Building
 
