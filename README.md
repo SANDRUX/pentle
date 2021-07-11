@@ -1,7 +1,7 @@
 # Pentle
 
 <p align="center">
-  <img src="https://github.com/SpookyPinkyTux/pentle/blob/master/public/img/pentle-export.png" />
+  <img src="https://github.com/SpookyPinkyTux/pentle/blob/master/public/img/pentle-export.png" width="400" />
 </p>
 
 ### Building
