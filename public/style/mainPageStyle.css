@@ -7,7 +7,7 @@
   font-family: 'Press Start 2P', cursive;
 }
 
-main, nav .navbar-box h2, .container, .container .login-text, .container form, .container .login-form, .container .btn-box {
+main, nav .navbar-box h2, .login-container, .register-container, .login-container .login-text, .register-container .login-text, .login-container form, .register-container form, .login-container .login-form, .register-container .login-form, .login-container .btn-box, .register-container .btn-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,7 +69,7 @@ nav .navbar-box h2 {
   }
 }
 
-.container {
+.login-container, .register-container {
   position: relative;
   width: 500px;
   height: 400px;
@@ -82,7 +82,7 @@ nav .navbar-box h2 {
   margin: 0 20px;
 }
 
-.container .login-text {
+.login-container .login-text, .register-container .login-text {
   width: 100%;
   height: 50px;
   color: #FFF;
@@ -96,7 +96,7 @@ nav .navbar-box h2 {
           animation-duration: 2s;
 }
 
-.container form {
+.login-container form, .register-container form {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -104,13 +104,13 @@ nav .navbar-box h2 {
   height: 300px;
 }
 
-.container .login-form {
+.login-container .login-form, .register-container .login-form {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
 }
 
-.container .login-form .fname {
+.login-container .login-form .fname, .register-container .login-form .fname {
   width: 100%;
   height: 30px;
   background: transparent;
@@ -121,12 +121,12 @@ nav .navbar-box h2 {
   margin-bottom: 20px;
 }
 
-.container .login-form .name {
+.login-container .login-form .name, .register-container .login-form .name {
   color: #FFF;
   font-size: .9rem;
 }
 
-.container .btn-box {
+.login-container .btn-box, .register-container .btn-box {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -134,8 +134,7 @@ nav .navbar-box h2 {
   height: 50px;
 }
 
-.container .btn-box button {
-  position: absolute;
+.login-container .btn-box button, .register-container .btn-box button {
   bottom: 0;
   background: #42f56c;
   outline: none;
@@ -145,9 +144,10 @@ nav .navbar-box h2 {
   border-radius: 0 0 10px 10px;
   color: #FFF;
   cursor: pointer;
+  position: absolute;
 }
 
-.container .btn-box button:active {
+.login-container .btn-box button:active, .register-container .btn-box button:active {
   background: #298b40;
 }
 
@@ -162,7 +162,7 @@ nav .navbar-box h2 {
 
 .register-form a {
   text-decoration: none;
-  color: black;
+  color: #75aaff;
 }
 
 @-webkit-keyframes loginAnimation {
@@ -187,5 +187,80 @@ nav .navbar-box h2 {
   100% {
     font-size: 1.5rem;
   }
+}
+
+@-webkit-keyframes startButton {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes startButton {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.startPageButtons {
+  border: none;
+  position: relative;
+  margin: 20px;
+  width: 120px;
+  height: 50px;
+  cursor: pointer;
+  color: #FFF;
+  background: #42f56c;
+  border-radius: 10px;
+}
+
+.startPageButtons:nth-child(1) {
+  -webkit-animation-name: startButton;
+          animation-name: startButton;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-duration: 5.2s;
+          animation-duration: 5.2s;
+}
+
+.startPageButtons:nth-child(2) {
+  -webkit-animation-name: startButton;
+          animation-name: startButton;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+}
+
+.exit-box {
+  position: absolute;
+  margin: 20px;
+  right: 0;
+  cursor: pointer;
+}
+
+.fa-sign-out-alt {
+  color: #FFF;
 }
 /*# sourceMappingURL=mainPageStyle.css.map */

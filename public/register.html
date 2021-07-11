@@ -2,15 +2,20 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/v4-shims.css">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pentle | Register</title>
+    <title>Pentle</title>
     <link rel="shortcut icon" href="/public/img/pentle.png" />
     <link rel="stylesheet" href="/public/style/mainPageStyle.css" />
 </head>
 
 <body>
+    <div class="exit-box hidden">
+        <i class="fas fa-sign-out-alt fa-3x"></i>
+    </div>
     <nav>
         <div class="navbar-box">
             <div class="image-container">
@@ -20,7 +25,12 @@
         </div>
     </nav>
     <main>
-        <div class="container">
+    <div class="startup-container">
+        <button type="button" class="startPageButtons login">Log in</button>
+        <button type="button" class="startPageButtons signin">Sign Up</button>
+    </div>
+
+        <div class="register-container hidden">
             <div class="login-text">Register</div>
             <div class="login-form">
                 <form action="">
@@ -29,16 +39,30 @@
                     <label for="fname" class="name" , spellcheck="false">Password:</label><br />
                     <input type="password" class="fname playerIn" name="fname" /><br />
                 </form>
-                <div class="register-form">
-                    <a href="/login">Already have an Account? Login!</a> 
-                </div>
             </div>
             <div class="btn-box">
-                <button type="submit" id="submit">Submit</button>
+                <button type="submit" id="submit">Sign Up</button>
             </div>
-    </main>
+            </div>
+            <!-- login page -->
+            <div class="login-container hidden">
+            <div class="login-text">Log In</div>
+            <div class="login-form">
+                <form action="">
+                    <label for="fname" class="name" , spellcheck="false">Email:</label><br />
+                    <input type="email" class="fname playerIn" name="fname" /><br />
+                    <label for="fname" class="name" , spellcheck="false">Password:</label><br />
+                    <input type="password" class="fname playerIn" name="fname" /><br />
+                </form>
+            </div>
+            <div class="btn-box">
+                <button type="submit" id="submit">Log in</button>
+            </div>
+            </div>
+        </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="public/js/main.js" type="module"></script>
+<script src="distSrc/pageManipualtion.js"></script>
 <script src="distSrc/mainPage.js"></script>
 </html>
