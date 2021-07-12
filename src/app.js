@@ -26,15 +26,15 @@ app.post('/register', (req, res) =>
     let buffer = readFileSync('users/users.json', "utf8")
 
     const users = JSON.parse(buffer)
-
-    if (FindUser(users.user, req.body.user))
+    console.log(req.body);
+    if (FindUser(users.user, req.body))
     {
         res.status(409).end() // User already registered or already exists
     }
 
     else
     {   
-        users.user.push({name : req.body.user.name, password : req.body.user.password })
+        users.user.push({name : req.body.name, password : req.body.password })
 
         writeFileSync('users/users.json', JSON.stringify(users))
 
