@@ -20,4 +20,4 @@ $('#RegisterSubmit').click(()=>{
             });
        }
 
-    })
+})
