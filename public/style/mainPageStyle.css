@@ -263,4 +263,11 @@ nav .navbar-box h2 {
 .fa-sign-out-alt {
   color: #FFF;
 }
+
+.already {
+  position: absolute;
+  font-size: 0.7em;
+  top: 80%;
+  color: red;
+}
 /*# sourceMappingURL=mainPageStyle.css.map */
