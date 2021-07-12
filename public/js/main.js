@@ -32,9 +32,22 @@ $('#LoginSubmit').click(()=>{
                     password: $('.playerIn')[3].value,  
                 },
                 statusCode: {
-                    404:xhr=>{
-                        $('.dosenot').removeClass("hidden")
+                    404:xhr=>{ 
+                        if($('.passwordEx').hasClass("hidden")){
+                            $('.userEx').removeClass("hidden")
+                        }else{
+                            $('.passwordEx').addClass("hidden")
+                            $('.userEx').removeClass("hidden")
+                        }
                     },
+                    401:xhr=>{
+                        if($('.userEx').hasClass("hidden")){
+                            $('.passwordEx').removeClass("hidden")
+                        }else{
+                            $('.userEx').addClass("hidden")
+                            $('.passwordEx').removeClass("hidden")
+                        }
+                    }, 
                     201:xhr=>{
                         window.location.href = "/public/test.html";
                     }
