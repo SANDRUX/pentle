@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { writeFileSync, readFileSync, readFile, writeFile } = require('fs');     
-const { rejects } = require('assert');
-const { data } = require('jquery');
-const { resolve } = require('url');
 const { FindUser } = require('./FindUser')
 
 app.listen(5000, () => 
@@ -37,7 +34,7 @@ app.post('/register', (req, res) =>
         users.user.push({name : req.body.name, password : req.body.password })
 
         writeFileSync('users/users.json', JSON.stringify(users))
-
+        
         res.status(201).end() // User successfully registered
     }
 })
@@ -54,7 +51,7 @@ app.post('/login', (req, res) =>
     {
         if (req.body.password === user.password)
         {
-            res.status(201).end()
+            res.status(201).send('/public/test.html')
         }
 
         else

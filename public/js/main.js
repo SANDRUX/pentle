@@ -49,9 +49,9 @@ $('#LoginSubmit').click(()=>{
                         }
                     }, 
                     201:xhr=>{
-                        window.location.href = "/public/test.html";
+                        window.location.href = xhr
                     }
                   }
             });
        }
-    })
+})
