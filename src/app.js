@@ -23,10 +23,10 @@ app.get('/', (req, res) =>
 
 app.post('/register', (req, res) =>
 {
-    let buffer = readFileSync('users/users.json', "utf8")
+    const buffer = readFileSync('users/users.json', 'utf-8')
 
     const users = JSON.parse(buffer)
-    console.log(req.body);
+
     if (FindUser(users.user, req.body))
     {
         res.status(409).end() // User already registered or already exists
@@ -41,3 +41,38 @@ app.post('/register', (req, res) =>
         res.status(201).end() // User successfully registered
     }
 })
+
+app.post('/login', (req, res) =>
+{
+    const buffer = readFileSync('users/users.json', 'utf-8')
+
+    const users = JSON.parse(buffer)
+
+    const user = FindUser(users.user, req.body)
+
+    if (user)
+    {
+        if (req.body.password === user.password)
+        {
+            res.status(201).end()
+        }
+
+        else
+        {
+            res.status(401).end()
+        }
+    }
+
+    else
+    {
+        res.status(404).end()
+    }
+})
+
+
+
+
+
+
+
+
