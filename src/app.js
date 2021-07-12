@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { writeFileSync, readFileSync, readFile, writeFile } = require('fs');     
-const { rejects } = require('assert');
-const { data } = require('jquery');
-const { resolve } = require('url');
 const { FindUser } = require('./FindUser')
 
 app.listen(5000, () => 
@@ -23,21 +20,56 @@ app.get('/', (req, res) =>
 
 app.post('/register', (req, res) =>
 {
-    let buffer = readFileSync('users/users.json', "utf8")
+    const buffer = readFileSync('users/users.json', 'utf-8')
 
     const users = JSON.parse(buffer)
 
-    if (FindUser(users.user, req.body.user))
+    if (FindUser(users.user, req.body))
     {
         res.status(409).end() // User already registered or already exists
     }
 
     else
     {   
-        users.user.push({name : req.body.user.name, password : req.body.user.password })
+        users.user.push({name : req.body.name, password : req.body.password })
 
         writeFileSync('users/users.json', JSON.stringify(users))
-
+        
         res.status(201).end() // User successfully registered
     }
 })
+
+app.post('/login', (req, res) =>
+{
+    const buffer = readFileSync('users/users.json', 'utf-8')
+
+    const users = JSON.parse(buffer)
+
+    const user = FindUser(users.user, req.body)
+
+    if (user)
+    {
+        if (req.body.password === user.password)
+        {
+            res.status(201).send('/public/test.html')
+        }
+
+        else
+        {
+            res.status(401).end()
+        }
+    }
+
+    else
+    {
+        res.status(404).end()
+    }
+})
+
+
+
+
+
+
+
+
