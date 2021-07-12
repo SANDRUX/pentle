@@ -264,7 +264,7 @@ nav .navbar-box h2 {
   color: #FFF;
 }
 
-.already {
+.already, .dosenot {
   position: absolute;
   font-size: 0.7em;
   top: 80%;

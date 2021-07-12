@@ -1,5 +1,4 @@
 $('#RegisterSubmit').click(()=>{
-    console.log('gio');
     if($('.playerIn')[0].value != '' && $('.playerIn')[1].value != ''){
             console.log('Posted!');
             $.ajax({
@@ -19,5 +18,28 @@ $('#RegisterSubmit').click(()=>{
                   }
             });
        }
+})
 
+
+$('#LoginSubmit').click(()=>{
+    if($('.playerIn')[2].value != '' && $('.playerIn')[3].value != ''){
+        console.log('Posted!');
+            $.ajax({
+                type: "POST",
+                url: '/login',
+                data: {
+                    name: $('.playerIn')[2].value,
+                    password: $('.playerIn')[3].value,  
+                },
+                statusCode: {
+                    404:xhr=>{
+                        $('.dosenot').removeClass("hidden")
+                    },
+                    201:xhr=>{
+                        window.location.href = "/public/test.html";
+                    }
+                  }
+            });
+       }
+    }
 })
