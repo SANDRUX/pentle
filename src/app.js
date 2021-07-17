@@ -1,6 +1,14 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const http = require('http')
+const io = require('socket.io')(3000, 
+{
+    cors :
+    {
+        origin: ['http://localhost:5000']
+    }
+})
 const { writeFileSync, readFileSync, readFile, writeFile } = require('fs');     
 const { FindUser } = require('./FindUser')
 
@@ -20,7 +28,7 @@ app.get('/', (req, res) =>
 
 app.post('/register', (req, res) =>
 {
-    const buffer = readFileSync('users/users.json', 'utf-8')
+    const buffer = readFileSync('db/users/users.json', 'utf-8')
 
     const users = JSON.parse(buffer)
 
@@ -33,7 +41,7 @@ app.post('/register', (req, res) =>
     {   
         users.user.push({name : req.body.name, password : req.body.password })
 
-        writeFileSync('users/users.json', JSON.stringify(users))
+        writeFileSync('db/users/users.json', JSON.stringify(users))
         
         res.status(201).end() // User successfully registered
     }
@@ -41,7 +49,7 @@ app.post('/register', (req, res) =>
 
 app.post('/login', (req, res) =>
 {
-    const buffer = readFileSync('users/users.json', 'utf-8')
+    const buffer = readFileSync('db/users/users.json', 'utf-8')
 
     const users = JSON.parse(buffer)
 
@@ -51,7 +59,7 @@ app.post('/login', (req, res) =>
     {
         if (req.body.password === user.password)
         {
-            res.status(201).send('/public/test.html')
+            res.status(201).end()
         }
 
         else
@@ -64,6 +72,11 @@ app.post('/login', (req, res) =>
     {
         res.status(404).end()
     }
+})
+
+io.on('connection', socket => 
+{
+    console.log('USER CONNECTED!')
 })
 
 

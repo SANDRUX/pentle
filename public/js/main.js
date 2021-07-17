@@ -1,3 +1,5 @@
+const io = require('socket.io-client')
+
 $('#RegisterSubmit').click(()=>{
     if($('.playerIn')[0].value != '' && $('.playerIn')[1].value != ''){
             console.log('Posted!');
@@ -13,13 +15,12 @@ $('#RegisterSubmit').click(()=>{
                         $('.already').removeClass("hidden")
                     },
                     201:xhr=>{
-                        window.location.href = "/public/test.html";
+                        console.log('USER REGISTERED!');
                     }
                   }
             });
        }
 })
-
 
 $('#LoginSubmit').click(()=>{
     if($('.playerIn')[2].value != '' && $('.playerIn')[3].value != ''){
@@ -48,8 +49,19 @@ $('#LoginSubmit').click(()=>{
                             $('.passwordEx').removeClass("hidden")
                         }
                     }, 
-                    201:xhr=>{
-                        window.location.href = xhr
+                    201:xhr =>
+                    {
+                        const socket = io('http://localhost:3000')
+                        
+                        socket.on('connect', () => 
+                        {
+                            console.log('Connected to a server')
+                        })
+
+                        socket.on('disconnect', () =>
+                        {
+                            console.log('Disconnected from a server')
+                        })                        
                     }
                   }
             });
