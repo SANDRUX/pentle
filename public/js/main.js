@@ -1,5 +1,3 @@
-const io = require('socket.io-client')
-
 $('#RegisterSubmit').click(()=>{
     if($('.playerIn')[0].value != '' && $('.playerIn')[1].value != ''){
             console.log('Posted!');
@@ -56,6 +54,13 @@ $('#LoginSubmit').click(()=>{
                         socket.on('connect', () => 
                         {
                             console.log('Connected to a server')
+                        })
+
+                        socket.emit('data', $('.playerIn')[2].value)
+
+                        socket.on('join', data =>
+                        {
+                            console.log(data)
                         })
 
                         socket.on('disconnect', () =>

@@ -74,12 +74,24 @@ app.post('/login', (req, res) =>
     }
 })
 
+
 io.on('connection', socket => 
 {
-    console.log('USER CONNECTED!')
+    let name;
+
+    socket.on('data', data =>
+    {
+        name = data
+        console.log(data)
+    })
+
+    socket.broadcast.emit('join', `${name} appeared!`)
 })
 
-
+io.on('disconnection', () =>
+{
+    console.log('Client Disconnected!')
+})
 
 
 
